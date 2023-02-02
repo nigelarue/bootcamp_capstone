@@ -79,8 +79,8 @@ const typeDefs = gql`
       username: String!
       email: String!
       password: String!
-      firstName: String
-      surName: String
+      firstName: String!
+      surName: String!
       dateOfBirth: String
       isProvider: Boolean!
     ): Auth

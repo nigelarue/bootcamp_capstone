@@ -15,8 +15,9 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    users: async (parent, args) => {
-      return User.find();
+    users: async () => {
+      const users = await User.find();
+      return users;
     },
   },
 
@@ -93,3 +94,5 @@ const resolvers = {
     },
   },
 };
+
+module.exports = resolvers;
