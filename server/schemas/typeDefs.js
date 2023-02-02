@@ -1,55 +1,106 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-    type User {
-        _id: ID!
-        username: String!
-        email: String
-        savedAppts: [apptSchema]
-        firstName: String
-        surName: String
-        dateOfBirth: [Date]
-        isProvider: Boolean!
-    }
+  type User {
+    _id: ID!
+    username: String!
+    email: String
+    savedAppts: [Appt]
+    firstName: String
+    surName: String
+    dateOfBirth: String
+    isProvider: Boolean!
+  }
 
-    type Provider {
-        _id: ID!
-        service: [String]
-        providerDescription: String
-        serviceDescription: [String]
-        user: userSchema
-        appointments: [apptSchema]
-        schedule: [day: String
-                   startTime: Int
-                   endTime: Int]
-        apptLength: [Int]
-    }
+  input UserInput {
+    _id: ID!
+    username: String!
+    email: String
+    savedAppts: [ApptInput]
+    firstName: String
+    surName: String
+    dateOfBirth: String
+    isProvider: Boolean!
+  }
 
-    type Appt {
-        _id: ID!
-        userBooking: ID
-        providerBooking: ID
-        apptLength: Int
-        apptDate: Date
-        createdAt: Date
-    }
+  type Schedule {
+    day: String
+    startTime: Int
+    endTime: Int
+  }
 
-    type Auth {
-        token: ID!
-        user: User
-    }
+  input ScheduleInput {
+    day: String
+    startTime: Int
+    endTime: Int
+  }
 
-    type Query {
-        me: User
-    }
+  type Provider {
+    _id: ID!
+    service: [String]
+    providerDescription: String
+    serviceDescription: [String]
+    user: User
+    appointments: [Appt]
+    schedule: [Schedule]
+    apptLength: [Int]
+  }
 
-    type Mutation {
-        login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!, firstName: String, surName: String, 
-            dateOfBirth: [Date], isProvider: Boolean!): Auth
-        addProvider(service: [String], providerDescription: String, serviceDescription: String, user: userSchema, 
-            schedule: [day: String, startTime: Int, endTime: Int], apptLength: [Int]): Auth
-        addAppt(userBooking: ID, providerBooking: ID, apptLength: Int, apptDate: Date, createdAt: Date): User
-        removeAppt(Appt: ID): User
-    }
+  type Appt {
+    _id: ID!
+    userBooking: ID
+    providerBooking: ID
+    apptLength: Int
+    apptDate: String
+    createdAt: String
+  }
+
+  input ApptInput {
+    _id: ID!
+    userBooking: ID
+    providerBooking: ID
+    apptLength: Int
+    apptDate: String
+    createdAt: String
+  }
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    me: User
+    users: [User]
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      firstName: String
+      surName: String
+      dateOfBirth: String
+      isProvider: Boolean!
+    ): Auth
+    addProvider(
+      service: [String]
+      providerDescription: String
+      serviceDescription: String
+      user: UserInput
+      schedule: [ScheduleInput]
+      apptLength: [Int]
+    ): Auth
+    addAppt(
+      userBooking: ID
+      providerBooking: ID
+      apptLength: Int
+      apptDate: String
+      createdAt: String
+    ): User
+    removeAppt(Appt: ID!): User
+  }
 `;
+
+module.exports = typeDefs;
