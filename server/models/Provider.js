@@ -16,9 +16,11 @@ const providerSchema = new Schema(
             type: String,
         },
         // description of service provider
-        serviceDescription: {
-            type: String,
-        },
+        serviceDescription: [
+            {
+                type: String,
+            },
+        ],
         // sources user and availabity models
         user: userSchema,
         appointments: [apptSchema],
@@ -28,17 +30,17 @@ const providerSchema = new Schema(
                     type: String,
                 },
                 startTime: {
-                    type: Number,
+                    type: Int,
                 },
                 endTime: {
-                    type: Number,
+                    type: Int,
                 },
             }
         ],
         // Storing number the amount of minutes in an appoint. (e.g. an hour and a half is stored as 90).
         apptLength: [
             {
-                type: Number,
+                type: Int,
             }
         ],
     },

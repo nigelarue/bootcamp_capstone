@@ -13,7 +13,7 @@ const apptSchema = new Schema(
             ref: 'Provider',
         },
         apptLength: {
-            type: Number,
+            type: Int,
         },
         apptDate: {
             type: Date,
