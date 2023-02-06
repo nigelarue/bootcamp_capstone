@@ -10,18 +10,20 @@
     "bootstrap": "^4.4.1",
     "graphql": "^15.4.0",
     "jwt-decode": "^2.2.0",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-bootstrap": "1.0.1",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "^4.0.2"
+    "react-scripts": "^4.0.2",
+    "reactstrap": "^9.1.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider start build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
