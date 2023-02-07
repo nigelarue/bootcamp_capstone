@@ -17,6 +17,7 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import UserProfiles from "./components/UserProfiles";
 import ProviderProfile from "./components/ProviderProfile";
+import "./App.css";
 
 function App() {
   const [pages] = useState([

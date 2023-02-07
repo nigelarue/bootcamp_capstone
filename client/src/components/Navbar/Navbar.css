@@ -1,0 +1,16 @@
+ .style__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2rem 6rem;
+}
+
+Nav.Link {
+    color: #fff;
+    font-family: var(--font-family-pg);
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
