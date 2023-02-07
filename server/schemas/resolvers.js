@@ -23,7 +23,7 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const user = await User.creacte(args);
       const token = signToken(user);
 
       return { token, user };
@@ -49,23 +49,25 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addAppt: async (parent, args) => {
+    addAppt: async (parent, args, user) => {
       if (args.userBooking) {
-        const apptData = await Appt.create(args);
+        const apptData = args;
+        const token = signToken(user);
 
         const updatedUser = await User.findByIdAndUpdate(
-          { _id: args.userBooking._id },
+          { _id: args.userBooking },
           { $push: { savedAppts: apptData } },
           { new: true }
         );
 
-        const updatedProvider = await Provider.findByIdAndUpdate(
-          { _id: args.providerBooking._id },
-          { $push: { appointments: apptData } },
-          { new: true }
-        );
+        // const updatedProvider = await Provider.findByIdAndUpdate(
+        //   { _id: args.providerBooking },
+        //   { $push: { appointments: apptData } },
+        //   { new: true }
+        // );
 
-        return { apptData, updatedUser, updatedProvider };
+        // return { apptData, updatedUser, updatedProvider };
+        return { apptData, updatedUser, token };
       }
 
       throw new AuthenticationError("You need to be logged in!");

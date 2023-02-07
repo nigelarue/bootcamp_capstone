@@ -4,12 +4,12 @@ const dateFormat = require("../utils/dateFormat");
 
 const apptSchema = new Schema({
   userBooking: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String
+    // ref: "User",
   },
   providerBooking: {
-    type: Schema.Types.ObjectId,
-    ref: "Provider",
+    type: String
+    // ref: "Provider",
   },
   apptLength: {
     type: Number,
@@ -24,6 +24,6 @@ const apptSchema = new Schema({
   },
 });
 
-// const Appt = model('Appt', apptSchema);
+// const Appt = model("Appt", apptSchema);
 
 module.exports = apptSchema;
