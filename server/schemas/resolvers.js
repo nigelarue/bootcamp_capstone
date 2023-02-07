@@ -72,28 +72,39 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-
-    removeAppt: async (parent, args) => {
-      if (args.userBooking) {
-        const updatedUser = await User.findByIdAndUpdate(
-          { _id: args.userBooking._id },
-          { $pull: { savedAppts: args._id } },
+    
+      // delete thought
+     removeAppt(req, res) {
+       Appt.findOneAndRemove({ _id: req.params.apptId })
+        // remove thought id from user's `thoughts` field
+        return User.findOneAndUpdate(
+          { savedAppts: req.params.apptId },
+          { $pull: { savedAppts: req.params.apptId } },
           { new: true }
         );
+        },
+    
+    // removeAppt: async (parent, ,args) => {
+    //   if (args.userBooking) {
+    //     const updatedUser = await User.findByIdAndUpdate(
+    //       { _id: args.userBooking._id },
+    //       { $pull: { savedAppts: args._id } },
+    //       { new: true }
+    //     );
 
-        const updatedProvider = await Provider.findByIdAndUpdate(
-          { _id: args.providerBooking._id },
-          { $pull: { appointments: args._id } },
-          { new: true }
-        );
+    //     const updatedProvider = await Provider.findByIdAndUpdate(
+    //       { _id: args.providerBooking._id },
+    //       { $pull: { appointments: args._id } },
+    //       { new: true }
+    //     );
 
-        Appt.findByIdAndDelete(args._id);
+    //     Appt.findByIdAndDelete(args._id);
 
-        return { updatedUser, updatedProvider };
-      }
+    //     return { updatedUser, updatedProvider };
+    //   }
 
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
   },
 };
 
