@@ -67,8 +67,8 @@ export const ADD_PROVIDER = gql`
 
 export const ADD_APPT = gql`
   mutation addAppt(
-    $userBooking: ID
-    $providerBooking: ID
+    $userBooking: String
+    $providerBooking: String
     $apptLength: Int
     $apptDate: String
     $createdAt: String
@@ -80,8 +80,7 @@ export const ADD_APPT = gql`
       apptDate: $apptDate
       createdAt: $createdAt
     ) {
-      _id
-      username
+      token
     }
   }
 `;

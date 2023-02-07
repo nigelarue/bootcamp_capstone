@@ -48,17 +48,16 @@ const typeDefs = gql`
 
   type Appt {
     _id: ID!
-    userBooking: ID
-    providerBooking: ID
+    userBooking: String
+    providerBooking: String
     apptLength: Int
     apptDate: String
     createdAt: String
   }
 
   input ApptInput {
-    _id: ID!
-    userBooking: ID
-    providerBooking: ID
+    userBooking: String
+    providerBooking: String
     apptLength: Int
     apptDate: String
     createdAt: String
@@ -93,12 +92,12 @@ const typeDefs = gql`
       apptLength: [Int]
     ): Auth
     addAppt(
-      userBooking: ID
-      providerBooking: ID
+      userBooking: String
+      providerBooking: String
       apptLength: Int
       apptDate: String
       createdAt: String
-    ): User
+    ): Auth
     removeAppt(Appt: ID!): User
   }
 `;
