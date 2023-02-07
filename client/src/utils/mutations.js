@@ -7,6 +7,7 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
+        isProvider
       }
     }
   }
@@ -86,11 +87,10 @@ export const ADD_APPT = gql`
 `;
 
 export const REMOVE_APPT = gql`
-mutation removeAppt($appt: ID!){
+  mutation removeAppt($appt: ID!) {
     removeAppt(Appt: $appt) {
       _id
-        username
+      username
     }
   }
-  }
-  `;
+`;
