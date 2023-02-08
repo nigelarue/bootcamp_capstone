@@ -1,11 +1,19 @@
-.style__landing-title {
-    color: #fff;
+/* .style__landing-title {
+ 
+} */
+
+.style__landing-hdr {
+    /* color: #fff; */
     font-family: var(--font-family-pg);
     font-weight: 500;
 }
 
-.style__landing-hdr {
+.style__landing-btn {
+    padding: 0.5rem 1rem;
     color: #fff;
+    background: #00BCD4;
     font-family: var(--font-family-pg);
     font-weight: 500;
+
+    cursor: pointer;
 }

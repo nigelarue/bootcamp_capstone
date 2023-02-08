@@ -17,7 +17,7 @@ const AppNavbar = () => {
         <Navbar className="gradient__bg" expand="lg">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
-              Bootcamp-Capstone
+              <p className="style__navbar-brand">Bootcamp-Capstone</p>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar" />
             <Navbar.Collapse id="navbar">
@@ -27,23 +27,23 @@ const AppNavbar = () => {
                   <>
                     {Auth.getProfile().data.isProvider ? (
                       <Nav.Link as={Link} to="/provider">
-                        Provider
+                        <p className="style__navbar-links">Provider</p>
                       </Nav.Link>
                     ) : (
                       <Nav.Link as={Link} to="/user">
-                        User
+                        <p className="style__navbar-links">User</p>
                       </Nav.Link>
                     )}
 
-                    <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                    <Nav.Link onClick={Auth.logout}><p className="style__navbar-links">Logout</p></Nav.Link>
                   </>
                 ) : (
                   <>
                     <Nav.Link as={Link} to="/login">
-                      Login
+                      <p className="style__navbar-links">Login</p>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/signup">
-                      Signup
+                      <p className="style__navbar-links">Signup</p>
                     </Nav.Link>
                   </>
                 )}

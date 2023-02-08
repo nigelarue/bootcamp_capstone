@@ -11,7 +11,7 @@ function Landing() {
 
   return (
     <div className="style__landing-title flex-row space-between">
-      <h3 className="style__landing-hdr">APP DESCRIPTION DON'T FORGET</h3>
+      <h3 className="gradient__text style__landing-hdr">APP DESCRIPTION DON'T FORGET</h3>
       <a href="/signup">
         <Button className="style__landing-btn">Sign Up</Button>
       </a>

@@ -3,14 +3,26 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 2rem 6rem;
+    /* padding: 2rem 6rem; */
 }
 
-Nav.Link {
+.style__navbar-brand,
+.style__navbar-links,
+Link {
     color: #fff;
-    font-family: var(--font-family-pg);
-    font-weight: 500;
+    line-height: 25px;
 
+    /* margin: 0 1rem; */
     cursor: pointer;
 }
 
+.style__navbar-links {
+    font-family: var(--font-family-pg);
+    font-weight: 300; 
+}
+
+.style__navbar-brand {
+    font-size: var(--font-family-hdr);
+    font-weight: 500;
+    font-size: 32px;
+}
