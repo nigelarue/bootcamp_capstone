@@ -6,7 +6,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_APPT } from '../utils/mutations';
 import { GET_PROVIDERS } from '../utils/queries';
 
-const BookingForm = ({ providers }) => {
+const BookingForm = () => {
   const [providerId, setProviderId] = useState(null);
   const [appointmentFormData, setAppointmentFormData] = useState({
     provider: '',
@@ -18,8 +18,10 @@ const BookingForm = ({ providers }) => {
   const [addAppointment, { error }] = useMutation(ADD_APPT);
   const { data } = useQuery(GET_PROVIDERS);
   
-  const providersData = data?.provider || {};
+  const providersData = data?.providers || {};
   console.log(useQuery(GET_PROVIDERS));
+  console.log(data);
+  console.log(providersData);
     // call to the "useMutation" hook with the "ADD_APPOINTMENT" mutation. It returns an object with a "error" property.
     // The fifth state variable, "providersData", is destructured from the data property returned by the call to the "useQuery" hook with the "GET_PROVIDERS" query.
 
@@ -83,10 +85,14 @@ const BookingForm = ({ providers }) => {
     });
   };
 
-  const providerOptions = providersData.provider.map((provider) => ({
+  const providerOptions = [];
+
+  if(providersData.provider){
+    providerOptions = providersData.provider.map((provider) => ({
     label: provider.providerDescription,
     value: provider.id,
   }));
+}
 
 
     //     Pretty sure I don't need this actually... since pulling from providers.  

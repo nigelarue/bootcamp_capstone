@@ -12,7 +12,7 @@ const ProviderCatalog = () => {
 
     const [providerData, setProviderData] = useMutation(GET_PROVIDERS);
   
-    const providerData = data?.me || {};
+    providerData = data?.me || {};
   
     if (loading) {
       return <h2>LOADING...</h2>;

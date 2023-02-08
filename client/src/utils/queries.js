@@ -22,7 +22,7 @@ export const QUERY_ME = gql`
 
 export const GET_PROVIDERS = gql`
   {
-    provider {
+    providers {
       _id
       buisnessName
       providerDescription
