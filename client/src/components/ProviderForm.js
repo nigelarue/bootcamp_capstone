@@ -185,37 +185,37 @@ const ProviderForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Monday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Tuesday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Wednesday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Thursday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Friday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Saturday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Sunday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker disableClock={true} onChange={onChange} value={value} />
         </Form.Group>
 
         <Button
