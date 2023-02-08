@@ -86,20 +86,6 @@ const BookingForm = ({ providers }) => {
     value: provider.id,
   }));
 
-
-    //     Pretty sure I don't need this actually... since pulling from providers.  
-    //   const daysOptions = [
-    //     { label: 'Monday', value: 'Monday' },
-    //     { label: 'Tuesday', value: 'Tuesday' },
-    //     { label: 'Wednesday', value: 'Wednesday' },
-    //     { label: 'Thursday', value: 'Thursday' },
-    //     { label: 'Friday', value: 'Friday' },
-    //     { label: 'Saturday', value: 'Saturdayay'},
-    //     { label: 'Sunday', value: 'Sunday' },
-    //     { label: "Day", value: "day", disabled: true },
-    //   ];
-
-
   return (
     <>
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
