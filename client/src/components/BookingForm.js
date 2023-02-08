@@ -20,9 +20,7 @@ const BookingForm = ({ providers }) => {
   
   const providersData = data?.provider || {};
   console.log(data);
-    // call to the "useMutation" hook with the "ADD_APPOINTMENT" mutation. It returns an object with a "error" property.
-    // The fifth state variable, "providersData", is destructured from the data property returned by the call to the "useQuery" hook with the "GET_PROVIDERS" query.
-
+    
   const [validated] = useState(false);
 
   useEffect(() => {
@@ -104,7 +102,7 @@ const BookingForm = ({ providers }) => {
 
   return (
     <>
-        <Form>
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
             <Alert
             dismissible
             onClose={() => setShowAlert(false)}
