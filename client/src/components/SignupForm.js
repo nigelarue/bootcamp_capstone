@@ -5,8 +5,11 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
+  const navigate  = useNavigate();
+
   // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: '',
@@ -47,12 +50,26 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
+    console.log(userFormData);
+    if(userFormData.isProvider === "true"){
+      userFormData.isProvider = true;
+    } else {
+      userFormData.isProvider = false;
+    }
+
     try {
       const { data } = await addUser({
         variables: { ...userFormData },
       });
       console.log(data);
-      Auth.login(data.addUser.token);
+
+      if(!userFormData.isProvider){
+        Auth.login(data.addUser.token);
+      } else {
+        navigate('/providerSignup', { replace: true });
+        return;
+      }
+
     } catch (err) {
       console.error(err);
     }
@@ -66,6 +83,7 @@ const SignupForm = () => {
       dateOfBirth: '',
       isProvider: '',
     });
+
   };
 
   return (
@@ -177,7 +195,7 @@ const SignupForm = () => {
             type="checkbox"
             name="isProvider"
             onChange={handleInputChange}
-            value={userFormData.firstName}
+            value={true}
             required
           />
           <Form.Control.Feedback type="invalid">
@@ -193,8 +211,8 @@ const SignupForm = () => {
               userFormData.password &&
               userFormData.firstName &&
               userFormData.surName &&
-              userFormData.dateOfBirth &&
-              userFormData.isProvider
+              userFormData.dateOfBirth 
+              //userFormData.isProvider
             )
           }
           type="submit"

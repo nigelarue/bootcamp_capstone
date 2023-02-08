@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import ProviderForm from "./components/ProviderForm";
 import UserProfiles from "./components/UserProfiles";
 import ProviderProfile from "./components/ProviderProfile";
 import "./App.css";
@@ -78,6 +79,7 @@ function App() {
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/provider" element={<ProviderProfile />} />
             <Route path="/user" element={<UserProfiles />} />
+            <Route path="/providerSignup" element={<ProviderForm />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
