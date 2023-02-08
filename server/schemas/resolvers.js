@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Provider, Appt } = require("../models");
+const { set } = require("../models/Appt");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -28,87 +29,19 @@ const resolvers = {
 
       return { token, user };
     },
-    addProvider: async (parent, args, user) => {
-
-      const schedule = [];
-      const tempDay = {};
-
+    addProvider: async (parent, args, userData, scheduleData) => {
+      // const tempProvider = {
+      //   service: args.service,
+      //   providerDescription: args.providerDescription,
+      //   serviceDescription: args.serviceDescription,
+      //   schedule: scheduleData,
+      //   apptLength: args.apptLength,
+      //   user: userData,
+      // };
       const token = signToken(user);
+      const provider = await Provider.create(args);
 
-      args.availableDays.forEach(indexDay => {
-        switch(indexDay) {
-          case "monday":
-            tempDay = { 
-              day: indexDay,
-              startTime: args.mondayRange.startTime,
-              endTime: args.mondayRange.endTime,
-            }; 
-            schedule.push(tempDay);
-            return;
-          case "tuesday":
-            tempDay = { 
-             day: indexDay,
-             startTime: args.tuesdayRange.startTime,
-             endTime: args.tuesdayRange.endTime,
-            }; 
-            schedule.push(tempDay);
-            return;
-          case "wednesday":
-            tempDay = { 
-             day: indexDay,
-             startTime: args.wednesdayRange.startTime,
-             endTime: args.wednesdayRange.endTime,
-            }; 
-            schedule.push(tempDay);
-            return;
-          case "thursday":
-            tempDay = { 
-             day: indexDay,
-             startTime: args.thursdayRange.startTime,
-             endTime: args.thursdayRange.endTime,
-            }; 
-            schedule.push(tempDay);
-            return;
-          case "friday":
-            tempDay = { 
-             day: indexDay,
-             startTime: args.fridayRange.startTime,
-             endTime: args.fridayRange.endTime,
-            }; 
-            schedule.push(tempDay);
-            return;
-          case "saturday":
-            tempDay = { 
-             day: indexDay,
-             startTime: args.saturdayRange.startTime,
-             endTime: args.saturdayRange.endTime,
-             }; 
-             schedule.push(tempDay);
-             return;
-          case "sunday":
-            tempDay = { 
-             day: indexDay,
-             startTime: args.sundayRange.startTime,
-             endTime: args.sundayRange.endTime,
-             }; 
-             schedule.push(tempDay);
-             return;
-          default:
-             return;   
-        }
-      });
-
-      const tempProvider = {service:  args.service,
-        providerDescription: args.providerDescription,
-        serviceDescription: args.serviceDescription,
-        schedule: schedule, 
-        apptLength: args.apptLength,
-        user: user,
-      }
-
-      const provider = await Provider.create(tempProvider);
-      
-      return provider;
+      return { token, provider};
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
