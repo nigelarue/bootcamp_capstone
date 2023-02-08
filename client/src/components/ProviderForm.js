@@ -318,8 +318,8 @@ const ProviderForm = () => {
             !(
               providerFormData.providerDescription &&
               providerFormData.service &&
-              providerFormData.serviceDescription &&
-              providerFormData.availableDays
+              providerFormData.serviceDescription 
+              // providerFormData.availableDays
             )
           }
           type="submit"
