@@ -1,50 +1,132 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import Select from 'react-select';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { ADD_APPT, REMOVE_APPT } from '../utils/mutations';
-import { gql } from '@apollo/client'
-// check to be sure useQuery @apollo/react-hooks installed
-// request available appointment data from provider
+// import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import { useMutation } from '@apollo/client';
+import { ADD_APPOINTMENT, GET_PROVIDERS } from '../utils/mutations';
 
-const GET_APPT_TIMES = gql`
-    query getApptTimes {
-        getApptTimes {
-            time
-        }
+const AppointmentForm = ({ providers }) => {
+    const [providerId, setProviderId] = useState(null);
+  const [appointmentFormData, setAppointmentFormData] = useState({
+    provider: '',
+    day: '',
+    startTime: '',
+    endTime: '',
+  });
+  const [showAlert, setShowAlert] = useState(false);
+  const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
+  const { data: providersData } = useQuery(GET_PROVIDERS);
+  
+    // call to the "useMutation" hook with the "ADD_APPOINTMENT" mutation. It returns an object with a "error" property.
+    // The fifth state variable, "providersData", is destructured from the data property returned by the call to the "useQuery" hook with the "GET_PROVIDERS" query.
+
+  const [validated] = useState(false);
+
+  useEffect(() => {
+    if (error) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
     }
-`;
+  }, [error]);
 
-function AppointmentForm() {
-    const { data, loading, error } = useQuery(GET_APPT_TIMES);
-    const [selectedTime, setSelectedTime] = useState('');
+  const handleSelectProvider = (selectedOption) => {
+    setProviderId(selectedOption.value);
+  };
 
-    useEffect(() => {
-        if (!loading && data) {
-            setSelectedTime(data.getApptTimes[0].time);
-        }
-    }, [data, loading]);
+  const handleSelectDay = (selectedOption) => {
+    setAppointmentFormData({
+      ...appointmentFormData,
+      day: selectedOption.value,
+    });
+  };
 
-    return (
-        <form>
-            {loading ? (
-                <p>Loading...</p>
-            ) : error ? (
-                <p>Error: {error.message}</p>
-            ) : (
-                <>
-                    <label htmlFor="appt-time">Appointment Time:</label>
-                    <select id="appt-time" onChange={e => setSelectedTime(e.target.value)} value={selectedTime}>
-                        {data.getApptTimes.map(time => (
-                            <option key={time.time} value={time.time}>
-                                {time.time}
-                            </option>
-                        ))}
-                    </select>
-                </>
-            )}
-        </form>
-    );
+  const handleTimeChange = (time) => {
+    setAppointmentFormData({
+      ...appointmentFormData,
+      startTime: time[0],
+      endTime: time[1],
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const { data } = await addAppointment({
+        variables: {
+          provider: providerId,
+          day: appointmentFormData.day,
+          startTime: appointmentFormData.startTime,
+          endTime: appointmentFormData.endTime,
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setAppointmentFormData({
+      provider: '',
+      day: '',
+      startTime: '',
+      endTime: '',
+    });
+  };
+
+  const providerOptions = providersData?.providers.map((provider) => ({
+    label: provider.providerDescription,
+    value: provider.id,
+  }));
+
+
+    //     Pretty sure I don't need this actually... since pulling from providers.  
+    //   const daysOptions = [
+    //     { label: 'Monday', value: 'Monday' },
+    //     { label: 'Tuesday', value: 'Tuesday' },
+    //     { label: 'Wednesday', value: 'Wednesday' },
+    //     { label: 'Thursday', value: 'Thursday' },
+    //     { label: 'Friday', value: 'Friday' },
+    //     { label: 'Saturday', value: 'Saturdayay'},
+    //     { label: 'Sunday', value: 'Sunday' },
+    //     { label: "Day", value: "day", disabled: true },
+    //   ];
+
+
+  return (
+    <>
+        <Form>
+            <Alert
+            dismissible
+            onClose={() => setShowAlert(false)}
+            show={showAlert}
+            variant="danger"
+            >
+            Something went wrong with your appointment!
+            </Alert>
+
+            <Form.Group>
+            <Form.Label htmlFor="provider">Select a Provider</Form.Label>
+            <Select
+                options={providerOptions}
+                value={providerId}
+                onChange={handleSelectProvider}
+            />
+            </Form.Group>
+
+        
+                <Form.Group>
+                <Button type="submit" variant="success">Submit</Button>
+            </Form.Group>
+        </Form>
+    </>
+  );
 }
 
 export default AppointmentForm;
