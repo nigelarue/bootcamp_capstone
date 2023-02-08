@@ -19,7 +19,7 @@ const BookingForm = ({ providers }) => {
   const { data } = useQuery(GET_PROVIDERS);
   
   const providersData = data?.provider || {};
-  console.log(data);
+  console.log(useQuery(GET_PROVIDERS));
     // call to the "useMutation" hook with the "ADD_APPOINTMENT" mutation. It returns an object with a "error" property.
     // The fifth state variable, "providersData", is destructured from the data property returned by the call to the "useQuery" hook with the "GET_PROVIDERS" query.
 
@@ -83,7 +83,7 @@ const BookingForm = ({ providers }) => {
     });
   };
 
-  const providerOptions = providersData.map((provider) => ({
+  const providerOptions = providersData.provider.map((provider) => ({
     label: provider.providerDescription,
     value: provider.id,
   }));
