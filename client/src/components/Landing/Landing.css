@@ -11,9 +11,17 @@
 .style__landing-btn {
     padding: 0.5rem 1rem;
     color: #fff;
-    background: #00BCD4;
+    background: #2f4c6a;
     font-family: var(--font-family-pg);
     font-weight: 500;
 
     cursor: pointer;
+}
+
+.style__landing-hdr,
+.style__landing-btn {
+
+    justify-content: center;
+    align-items: center;
+
 }

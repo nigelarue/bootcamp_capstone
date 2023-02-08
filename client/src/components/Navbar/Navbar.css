@@ -1,24 +1,24 @@
  .style__navbar {
-    display: flex;
+
     justify-content: space-between;
     align-items: center;
 
-    /* padding: 2rem 6rem; */
 }
 
 .style__navbar-brand,
 .style__navbar-links,
 Link {
-    color: #fff;
+    color: #ff8a71;
     line-height: 25px;
-
+    
     /* margin: 0 1rem; */
     cursor: pointer;
 }
 
 .style__navbar-links {
     font-family: var(--font-family-pg);
-    font-weight: 300; 
+    color: #ff8a71;
+    font-weight: 400; 
 }
 
 .style__navbar-brand {
