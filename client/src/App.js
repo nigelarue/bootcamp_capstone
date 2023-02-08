@@ -80,6 +80,7 @@ function App() {
             <Route path="/provider" element={<ProviderProfile />} />
             <Route path="/user" element={<UserProfiles />} />
             <Route path="/providerSignup" element={<ProviderForm />} />
+            <Route path="/providerCatalog" element={<ProviderCatalog />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
