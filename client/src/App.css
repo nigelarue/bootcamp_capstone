@@ -7,7 +7,7 @@
 }
 
 body {
-  background: var(--color-bg);
+  /* background: var(--color-bg); */
   margin: 0;
   font-family: var(--font-family-pg);
 }

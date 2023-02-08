@@ -13,9 +13,9 @@ const ProviderForm = () => {
     providerDescription: '',
     serviceDescription: '',
     availableDays: '',
+    mondayRange: '',
     apptLength: '',
   });
-  const [value, onChange] = useState(['10:00', '11:00']);
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
@@ -32,30 +32,65 @@ const ProviderForm = () => {
   }, [error]);
 
   const handleDays = (days) => {
-    days.forEach(element => console.log(element));
+    const dayInput = [];
+    days.forEach(element => dayInput.push(element.value));
+    setProviderFormData({ ...providerFormData, ["availableDays"]: dayInput });
 
-    if(days.find(e => e.label === 'Monday')){
-      console.log("Monday");
-    } 
-    if(days.find(e => e.label === 'Tuesday')){
-      console.log("Tuesday");
-    } 
-    if(days.find(e => e.label === 'Wednesday')){
-      console.log("Wednesday");
-    } 
-    if(days.find(e => e.label === 'Thursday')){
-      console.log("Thursday");
-    } 
-    if(days.find(e => e.label === 'Friday')){
-      console.log("Friday");
-    } 
-    if(days.find(e => e.label === 'Saturday')){
-      console.log("Saturday");
-    } 
-    if(days.find(e => e.label === 'Sunday')){
-      console.log("Sunday");
-    } 
+    // if(days.find(e => e.label === 'Monday')){
+    //   console.log("Monday");
+    // } 
+    // if(days.find(e => e.label === 'Tuesday')){
+    //   console.log("Tuesday");
+    // } 
+    // if(days.find(e => e.label === 'Wednesday')){
+    //   console.log("Wednesday");
+    // } 
+    // if(days.find(e => e.label === 'Thursday')){
+    //   console.log("Thursday");
+    // } 
+    // if(days.find(e => e.label === 'Friday')){
+    //   console.log("Friday");
+    // } 
+    // if(days.find(e => e.label === 'Saturday')){
+    //   console.log("Saturday");
+    // } 
+    // if(days.find(e => e.label === 'Sunday')){
+    //   console.log("Sunday");
+    // } 
   };
+
+  //Logic for retriving the schedule from the form
+  const handleTimesMO = (times) => {
+    let timeFrom = document.getElementsByName("monday_from");
+    let timeTo =  document.getElementsByName("monday_to");
+    
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
+
+    setProviderFormData({ ...providerFormData, ["mondayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
+    console.log(providerFormData);
+  }
+  const handleTimesTU = (times) => {
+  
+  }
+  const handleTimesWE = (times) => {
+    
+  }
+  const handleTimesTH = (times) => {
+
+  }
+  const handleTimesFR = (times) => {
+
+  }
+  const handleTimesSA = (times) => {
+
+  }
+  const handleTimesSU = (times) => {
+
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +99,7 @@ const ProviderForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(providerFormData);
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -85,7 +120,6 @@ const ProviderForm = () => {
         service: '',
         providerDescription: '',
         serviceDescription: '',
-        schedule: '',
         apptLength: '',
     });
   };
@@ -170,13 +204,13 @@ const ProviderForm = () => {
           <Select
             isMulti
             name="availableDays"
-            options={[{label: "Monday", value: "0"}, 
-                      {label: "Tuesday", value: "1"}, 
-                      {label: "Wednesday", value: "2"},
-                      {label: "Thursday", value: "3"},
-                      {label: "Friday", value: "4"},
-                      {label: "Saturday", value: "5"},
-                      {label: "Sunday", value: "6"},]}
+            options={[{label: "Monday", value: "Monday"}, 
+                      {label: "Tuesday", value: "Tuesday"}, 
+                      {label: "Wednesday", value: "Wednesday"},
+                      {label: "Thursday", value: "Thursday"},
+                      {label: "Friday", value: "Friday"},
+                      {label: "Saturday", value: "Saturday"},
+                      {label: "Sunday", value: "Sunday"},]}
             className="basic-multi-select"
             onChange={handleDays}
             classNamePrefix="select"
@@ -185,47 +219,47 @@ const ProviderForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Monday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker name="monday" onChange={handleTimesMO} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Tuesday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker name="tuesday" onChange={handleTimesTU} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Wednesday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker name="wednesday" onChange={handleTimesWE} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Thursday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker name="thursday" onChange={handleTimesTH} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Friday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker  name="friday" onChange={handleTimesFR} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Saturday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker name="saturday" onChange={handleTimesSA} />
         </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="schedule">When are you available on Sunday?</Form.Label>
-          <TimeRangePicker onChange={onChange} value={value} />
+          <TimeRangePicker name="sunday" onChange={handleTimesSU} />
         </Form.Group>
 
         <Button
-          disabled={
-            !(
-              providerFormData.providerDescription &&
-              providerFormData.service &&
-              providerFormData.serviceDescription
-            )
-          }
+          // disabled={
+          //   !(
+          //     providerFormData.providerDescription &&
+          //     providerFormData.service &&
+          //     providerFormData.serviceDescription
+          //   )
+          // }
           type="submit"
           variant="success"
         >
