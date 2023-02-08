@@ -14,6 +14,12 @@ const ProviderForm = () => {
     serviceDescription: '',
     availableDays: '',
     mondayRange: '',
+    tuesdayRange: '',
+    wednesdayRange: '',
+    thursdayRange: '',
+    fridayRange: '',
+    saturdayRange: '',
+    sundayRange: '',
     apptLength: '',
   });
   // set state for form validation
@@ -71,25 +77,78 @@ const ProviderForm = () => {
     }
 
     setProviderFormData({ ...providerFormData, ["mondayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
-    console.log(providerFormData);
   }
   const handleTimesTU = (times) => {
-  
+    let timeFrom = document.getElementsByName("tuesday_from");
+    let timeTo =  document.getElementsByName("tuesday_to");
+    
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
+
+    setProviderFormData({ ...providerFormData, ["tuesdayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
   }
   const handleTimesWE = (times) => {
+    let timeFrom = document.getElementsByName("wednesday_from");
+    let timeTo =  document.getElementsByName("wednesday_to");
     
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
+
+    setProviderFormData({ ...providerFormData, ["wednesdayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
   }
   const handleTimesTH = (times) => {
+    let timeFrom = document.getElementsByName("thursday_from");
+    let timeTo =  document.getElementsByName("thursday_to");
+    
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
 
+    setProviderFormData({ ...providerFormData, ["thursdayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
   }
   const handleTimesFR = (times) => {
+    let timeFrom = document.getElementsByName("friday_from");
+    let timeTo =  document.getElementsByName("friday_to");
+    
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
 
+    setProviderFormData({ ...providerFormData, ["fridayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
   }
   const handleTimesSA = (times) => {
+    let timeFrom = document.getElementsByName("saturday_from");
+    let timeTo =  document.getElementsByName("saturday_to");
+    
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
 
+    setProviderFormData({ ...providerFormData, ["saturdayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
   }
   const handleTimesSU = (times) => {
+    let timeFrom = document.getElementsByName("sunday_from");
+    let timeTo =  document.getElementsByName("sunday_to");
+    
+    if(times[0]){
+      timeFrom[0].value = times[0];
+    } else if (times[1]){
+      timeTo[0].value = times[1];
+    }
 
+    setProviderFormData({ ...providerFormData, ["sundayRange"]: {startTime: timeFrom[0].value, endTime: timeTo[0].value} });
   }
 
   const handleInputChange = (event) => {
@@ -110,7 +169,9 @@ const ProviderForm = () => {
     try {
       const { data } = await addProvider({
         variables: { ...providerFormData },
-      });
+      },
+      localStorage.getItem("id_token")
+      );
       console.log(data);
     } catch (err) {
       console.error(err);
@@ -253,13 +314,14 @@ const ProviderForm = () => {
         </Form.Group>
 
         <Button
-          // disabled={
-          //   !(
-          //     providerFormData.providerDescription &&
-          //     providerFormData.service &&
-          //     providerFormData.serviceDescription
-          //   )
-          // }
+          disabled={
+            !(
+              providerFormData.providerDescription &&
+              providerFormData.service &&
+              providerFormData.serviceDescription &&
+              providerFormData.availableDays
+            )
+          }
           type="submit"
           variant="success"
         >

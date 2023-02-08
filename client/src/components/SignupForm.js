@@ -65,7 +65,9 @@ const SignupForm = () => {
 
       if(!userFormData.isProvider){
         Auth.login(data.addUser.token);
+        navigate('/user', { replace: true });
       } else {
+        Auth.login(data.addUser.token);
         navigate('/providerSignup', { replace: true });
         return;
       }
