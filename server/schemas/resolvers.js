@@ -19,6 +19,10 @@ const resolvers = {
       const users = await User.find();
       return users;
     },
+    providers: async () => {
+      const providers = await Provider.find();
+      return providers;
+    },
   },
 
   Mutation: {

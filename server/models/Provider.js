@@ -5,6 +5,11 @@ const apptSchema = require("./Appt");
 
 const providerSchema = new Schema(
   {
+    buisnessName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     service: [
       {
         type: String,

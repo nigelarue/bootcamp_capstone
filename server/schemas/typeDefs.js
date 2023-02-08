@@ -37,6 +37,7 @@ const typeDefs = gql`
 
   type Provider {
     _id: ID!
+    buisnessName: String
     service: [String]
     providerDescription: String
     serviceDescription: [String]
@@ -70,6 +71,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
+    providers: [Provider]
   }
 
   type Mutation {
@@ -84,6 +86,7 @@ const typeDefs = gql`
       isProvider: Boolean!
     ): Auth
     addProvider(
+      buisnessName: String
       service: [String]
       providerDescription: String
       serviceDescription: String
