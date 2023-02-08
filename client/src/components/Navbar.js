@@ -40,6 +40,9 @@ const AppNavbar = () => {
                 ) : (
                   <>
                     <Nav.Link as={Link} to="/login">
+                      Catalog of our Service Providers
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/login">
                       Login
                     </Nav.Link>
                     <Nav.Link as={Link} to="/signup">
