@@ -42,6 +42,11 @@ const LoginForm = ({ setCurrentPage }) => {
 
       console.log(data);
       Auth.login(data.login.token, data.login.user.isProvider);
+      if (data.login.user.isProvider) {
+        window.location.assign("/provider");
+      } else {
+        window.location.assign("/user");
+      }
     } catch (e) {
       console.error(e);
     }

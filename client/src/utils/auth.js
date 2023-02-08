@@ -36,11 +36,6 @@ class AuthService {
   login(idToken, isProvider) {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
-    if (isProvider) {
-      window.location.assign("/provider");
-    } else {
-      window.location.assign("/user");
-    }
   }
 
   logout() {

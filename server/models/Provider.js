@@ -26,9 +26,8 @@ const providerSchema = new Schema(
       },
     ],
     // sources user and availabity models
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+    username: {
+      type: String,
     },
     appointments: {
       type: Schema.Types.ObjectId,
@@ -40,10 +39,10 @@ const providerSchema = new Schema(
           type: String,
         },
         startTime: {
-          type: Number,
+          type: String,
         },
         endTime: {
-          type: Number,
+          type: String,
         },
       },
     ],

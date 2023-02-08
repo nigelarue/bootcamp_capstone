@@ -13,7 +13,6 @@ const typeDefs = gql`
   }
 
   input UserInput {
-    _id: ID!
     username: String!
     email: String
     savedAppts: [ApptInput]
@@ -25,14 +24,14 @@ const typeDefs = gql`
 
   type Schedule {
     day: String
-    startTime: Int
-    endTime: Int
+    startTime: String
+    endTime: String
   }
 
   input ScheduleInput {
     day: String
-    startTime: Int
-    endTime: Int
+    startTime: String
+    endTime: String
   }
 
   type Provider {
@@ -41,7 +40,7 @@ const typeDefs = gql`
     service: [String]
     providerDescription: String
     serviceDescription: [String]
-    user: User
+    username: String
     appointments: [Appt]
     schedule: [Schedule]
     apptLength: [Int]
@@ -90,7 +89,7 @@ const typeDefs = gql`
       service: [String]
       providerDescription: String
       serviceDescription: String
-      user: UserInput
+      username: String
       schedule: [ScheduleInput]
       apptLength: [Int]
     ): Auth

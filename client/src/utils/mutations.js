@@ -47,7 +47,7 @@ export const ADD_PROVIDER = gql`
     $service: [String]
     $providerDescription: String
     $serviceDescription: String
-    $user: UserInput
+    $username: String
     $schedule: [ScheduleInput]
     $apptLength: [Int]
   ) {
@@ -56,14 +56,11 @@ export const ADD_PROVIDER = gql`
       service: $service
       providerDescription: $providerDescription
       serviceDescription: $serviceDescription
-      user: $user
+      username: $username
       schedule: $schedule
       apptLength: $apptLength
     ) {
-      user {
-        _id
-        username
-      }
+    token 
     }
   }
 `;

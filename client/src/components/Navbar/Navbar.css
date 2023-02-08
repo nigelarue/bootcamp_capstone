@@ -1,16 +1,28 @@
  .style__navbar {
-    display: flex;
+
     justify-content: space-between;
     align-items: center;
 
-    padding: 2rem 6rem;
 }
 
-Nav.Link {
-    color: #fff;
-    font-family: var(--font-family-pg);
-    font-weight: 500;
-
+.style__navbar-brand,
+.style__navbar-links,
+Link {
+    color: #ff8a71;
+    line-height: 25px;
+    
+    /* margin: 0 1rem; */
     cursor: pointer;
 }
 
+.style__navbar-links {
+    font-family: var(--font-family-pg);
+    color: #ff8a71;
+    font-weight: 400; 
+}
+
+.style__navbar-brand {
+    font-size: var(--font-family-hdr);
+    font-weight: 500;
+    font-size: 32px;
+}
