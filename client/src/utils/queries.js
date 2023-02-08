@@ -19,3 +19,34 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const GET_PROVIDERS = gql`
+  {
+    providers {
+      _id
+      buisnessName
+      providerDescription
+      service
+      serciveDescription
+      schedule
+      appointments {
+        userBooking
+        providerBooking
+        apptLength
+        apptDate
+      }
+      apptLength
+      user
+    }
+  }
+`;
+
+// query to pull APPT times from a Provider
+// export const GET_APPT_TIMES = gql`
+//   query availableApptTimes($providerBooking: String, $apptDate: String) {
+//     availableApptTimes(providerBooking: $providerBooking, apptDate: $apptDate) {
+//       startTime
+//       endTime
+//     }
+//   }
+// `;

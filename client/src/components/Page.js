@@ -6,6 +6,7 @@ import Signup from "./SignupForm";
 import ProviderProfile from "./ProviderProfile";
 import UserProfile from "./UserProfiles";
 import Booking from "./BookingForm";
+import PoviderCatalog from "./ProviderCatalog";
 
 function Page({ currentPage, setCurrentPage }) {
   const renderPage = () => {
@@ -20,6 +21,8 @@ function Page({ currentPage, setCurrentPage }) {
         return <UserProfile />;
       case "Booking":
         return <Booking />;
+      case "Provider Catalog":
+        return <ProviderCatalog />;
       default:
         return <Landing />;
     }

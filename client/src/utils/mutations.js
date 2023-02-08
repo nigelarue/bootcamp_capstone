@@ -40,8 +40,10 @@ export const ADD_USER = gql`
     }
   }
 `;
+
 export const ADD_PROVIDER = gql`
   mutation addProvider(
+    $buisnessName: String
     $service: [String]
     $providerDescription: String
     $serviceDescription: String
@@ -50,6 +52,7 @@ export const ADD_PROVIDER = gql`
     $apptLength: [Int]
   ) {
     addProvider(
+      buisnessName: $buisnessName
       service: $service
       providerDescription: $providerDescription
       serviceDescription: $serviceDescription

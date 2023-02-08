@@ -18,6 +18,7 @@ import SignupForm from "./components/SignupForm";
 import ProviderForm from "./components/ProviderForm";
 import UserProfiles from "./components/UserProfiles";
 import ProviderProfile from "./components/ProviderProfile";
+import BookingForm from "./components/BookingForm";
 import "./App.css";
 
 function App() {
@@ -80,6 +81,8 @@ function App() {
             <Route path="/provider" element={<ProviderProfile />} />
             <Route path="/user" element={<UserProfiles />} />
             <Route path="/providerSignup" element={<ProviderForm />} />
+            {/* <Route path="/providerCatalog" element={<ProviderCatalog />} /> */}
+            <Route path="/BookingForm" element={<BookingForm />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
