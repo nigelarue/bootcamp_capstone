@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import Select from 'react-select';
 // import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
-import { useMutation } from '@apollo/client';
-import { ADD_APPOINTMENT, GET_PROVIDERS } from '../utils/mutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_APPT } from '../utils/mutations';
+import { GET_PROVIDERS } from '../utils/queries';
 
-const AppointmentForm = ({ providers }) => {
-    const [providerId, setProviderId] = useState(null);
+const BookingForm = ({ providers }) => {
+  const [providerId, setProviderId] = useState(null);
   const [appointmentFormData, setAppointmentFormData] = useState({
     provider: '',
     day: '',
@@ -14,9 +15,11 @@ const AppointmentForm = ({ providers }) => {
     endTime: '',
   });
   const [showAlert, setShowAlert] = useState(false);
-  const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
-  const { data: providersData } = useQuery(GET_PROVIDERS);
+  const [addAppointment, { error }] = useMutation(ADD_APPT);
+  const { data } = useQuery(GET_PROVIDERS);
   
+  const providersData = data?.provider || {};
+  console.log(data);
     // call to the "useMutation" hook with the "ADD_APPOINTMENT" mutation. It returns an object with a "error" property.
     // The fifth state variable, "providersData", is destructured from the data property returned by the call to the "useQuery" hook with the "GET_PROVIDERS" query.
 
@@ -80,7 +83,7 @@ const AppointmentForm = ({ providers }) => {
     });
   };
 
-  const providerOptions = providersData?.providers.map((provider) => ({
+  const providerOptions = providersData.map((provider) => ({
     label: provider.providerDescription,
     value: provider.id,
   }));
@@ -129,4 +132,4 @@ const AppointmentForm = ({ providers }) => {
   );
 }
 
-export default AppointmentForm;
+export default BookingForm;
