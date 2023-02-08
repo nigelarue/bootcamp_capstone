@@ -21,10 +21,7 @@ const BookingForm = () => {
   const providersData = data?.providers || {};
   console.log(useQuery(GET_PROVIDERS));
   console.log(data);
-  console.log(providersData);
-    // call to the "useMutation" hook with the "ADD_APPOINTMENT" mutation. It returns an object with a "error" property.
-    // The fifth state variable, "providersData", is destructured from the data property returned by the call to the "useQuery" hook with the "GET_PROVIDERS" query.
-
+    
   const [validated] = useState(false);
 
   useEffect(() => {
@@ -94,23 +91,9 @@ const BookingForm = () => {
   }));
 }
 
-
-    //     Pretty sure I don't need this actually... since pulling from providers.  
-    //   const daysOptions = [
-    //     { label: 'Monday', value: 'Monday' },
-    //     { label: 'Tuesday', value: 'Tuesday' },
-    //     { label: 'Wednesday', value: 'Wednesday' },
-    //     { label: 'Thursday', value: 'Thursday' },
-    //     { label: 'Friday', value: 'Friday' },
-    //     { label: 'Saturday', value: 'Saturdayay'},
-    //     { label: 'Sunday', value: 'Sunday' },
-    //     { label: "Day", value: "day", disabled: true },
-    //   ];
-
-
   return (
     <>
-        <Form>
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
             <Alert
             dismissible
             onClose={() => setShowAlert(false)}
