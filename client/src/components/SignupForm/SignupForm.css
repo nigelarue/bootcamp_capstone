@@ -1,7 +1,8 @@
 .style__form-label {
-    width: 48%;
+    padding: 1rem 1.5rem;  
 }
 
 .style__form-input {
+    padding: 1rem 1.5rem;
     width: 48%;
 }
