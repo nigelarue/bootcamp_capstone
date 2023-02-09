@@ -43,7 +43,7 @@ export const ADD_USER = gql`
 
 export const ADD_PROVIDER = gql`
   mutation addProvider(
-    $buisnessName: String
+    $buisnessName: String!
     $service: [String]
     $providerDescription: String
     $serviceDescription: String

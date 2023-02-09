@@ -33,16 +33,8 @@ const resolvers = {
 
       return { token, user };
     },
-    addProvider: async (parent, args, userData, scheduleData) => {
-      // const tempProvider = {
-      //   service: args.service,
-      //   providerDescription: args.providerDescription,
-      //   serviceDescription: args.serviceDescription,
-      //   schedule: scheduleData,
-      //   apptLength: args.apptLength,
-      //   user: userData,
-      // };
-      const token = signToken(user);
+    addProvider: async (parent, args, userData) => {
+      const token = signToken(userData);
       const provider = await Provider.create(args);
 
       return { token, provider};
