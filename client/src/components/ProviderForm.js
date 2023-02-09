@@ -206,8 +206,8 @@ const ProviderForm = () => {
       } else if(tempAvlDays[i] === "Wednesday"){
         tempDay = {
           day: tempAvlDays[i],
-          startTime: args.wednedayRange.startTime,
-          endTime: args.wednedayRange.endTime,
+          startTime: args.wednesdayRange.startTime,
+          endTime: args.wednesdayRange.endTime,
         };
         schedule.push(tempDay);
       } else if(tempAvlDays[i] === "Thursday"){

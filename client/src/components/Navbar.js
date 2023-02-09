@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 import "./Navbar/Navbar.css";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import BookingForm from "./BookingForm";
 
 import Auth from "../utils/auth";
 
@@ -30,9 +31,14 @@ const AppNavbar = () => {
                         <p className="style__navbar-links">Provider</p>
                       </Nav.Link>
                     ) : (
+                      <>
+                      <Nav.Link as={Link} to="/BookingForm">
+                        <p className="style__navbar-links">Book an Appointment</p>
+                      </Nav.Link>                       
                       <Nav.Link as={Link} to="/user">
                         <p className="style__navbar-links">User</p>
                       </Nav.Link>
+                      </>                     
                     )}
 
                     <Nav.Link onClick={Auth.logout}><p className="style__navbar-links">Logout</p></Nav.Link>
