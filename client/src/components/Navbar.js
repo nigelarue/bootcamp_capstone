@@ -17,7 +17,7 @@ const AppNavbar = () => {
         <Navbar className="gradient__bg" expand="lg">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
-              <p className="style__navbar-brand">Bootcamp-Capstone</p>
+              <p className="style__navbar-brand">Orbital Scheduler</p>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar" />
             <Navbar.Collapse id="navbar">
@@ -40,10 +40,9 @@ const AppNavbar = () => {
                 ) : (
                   <>
                     <Nav.Link as={Link} to="/login">
-                      Catalog of our Service Providers
+                    <p className="style__navbar-links-srvc-prvdrs">Catalog of our Service Providers</p>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/login">
-                      Login
                       <p className="style__navbar-links">Login</p>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/signup">

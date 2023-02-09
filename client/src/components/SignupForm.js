@@ -104,7 +104,7 @@ const SignupForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
+          <Form.Control className="mb-3" controlId="exampleForm.ControlInput1"
             type="text"
             placeholder="Your username"
             name="username"
@@ -119,7 +119,7 @@ const SignupForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
+          <Form.Control className="mb-3" controlId="exampleForm.ControlInput1"
             type="email"
             placeholder="Your email address"
             name="email"
