@@ -23,7 +23,7 @@ const AppNavbar = () => {
             <Navbar.Toggle aria-controls="navbar" />
             <Navbar.Collapse id="navbar">
               <Nav className="ml-auto">
-                {/* if user is logged in show saved books and logout */}
+                {/* if user is logged in show saved appts and logout */}
                 {Auth.loggedIn() ? (
                   <>
                     {Auth.getProfile().data.isProvider ? (
