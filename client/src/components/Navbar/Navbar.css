@@ -11,8 +11,15 @@ Link {
     color: #ff8a71;
     line-height: 25px;
     
-    /* margin: 0 1rem; */
+
     cursor: pointer;
+}
+
+.style__navbar-links-srvc-prvdrs {
+    font-family: var(--font-family-pg);
+    color: #0b226f;
+    font-size: 26;  
+    font-weight: 800;
 }
 
 .style__navbar-links {
@@ -24,5 +31,5 @@ Link {
 .style__navbar-brand {
     font-size: var(--font-family-hdr);
     font-weight: 500;
-    font-size: 32px;
+    font-size: 40px;
 }

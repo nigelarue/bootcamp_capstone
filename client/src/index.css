@@ -6,8 +6,8 @@
   --font-family-hdr: 'Roboto Condensed', sans-serif;
   --font-family-pg: 'Roboto', sans-serif;
 
-  --gradient-text: linear-gradient(89.97deg, #18134b 1.84%, #525165);
-  --gradient-bar: linear-gradient(103.22deg, #18134b 1.84%, #2c3a68);
+  --gradient-text: linear-gradient(89.97deg, #F49867 102.67%, #AE67FA 1.84%);
+  --gradient-bar: linear-gradient(103.22deg, #F49867 99.55%, #AE67FA -13.86%);
 
   --color-bg: #040c18;
   --color-footer: #031b34;

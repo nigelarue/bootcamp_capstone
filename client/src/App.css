@@ -7,40 +7,23 @@
 }
 
 body {
-  /* ff 3.6+ */
-  background: -moz-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* ff 3.6+ */
+    background:-moz-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%); 
 
-  /* safari 5.1+,chrome 10+ */
-  background: -webkit-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
 
-  /* opera 11.10+ */
-  background: -o-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* opera 11.10+ */
+    background:-o-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
 
-  /* ie 10+ */
-  background: -ms-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1973AC', endColorstr='#FFFFFF', GradientType=0 );
 
-  /* global 92%+ browsers support */
-  background: radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* ie 10+ */
+    background:-ms-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
+
+    /* global 94%+ browsers support */
+    background:linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
 
   margin: 0;
   font-family: var(--font-family-pg);
@@ -52,40 +35,23 @@ a {
 }
 
 .gradient__bg {
-  /* ff 3.6+ */
-  background: -moz-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* ff 3.6+ */
+    background:-moz-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%); 
 
-  /* safari 5.1+,chrome 10+ */
-  background: -webkit-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
 
-  /* opera 11.10+ */
-  background: -o-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* opera 11.10+ */
+    background:-o-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
 
-  /* ie 10+ */
-  background: -ms-radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1973AC', endColorstr='#FFFFFF', GradientType=0 );
 
-  /* global 92%+ browsers support */
-  background: radial-gradient(
-    circle at 3% 25%,
-    rgba(254, 254, 255, 1) 0%,
-    rgba(85, 121, 200, 1) 100%
-  );
+    /* ie 10+ */
+    background:-ms-linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
+
+    /* global 94%+ browsers support */
+    background:linear-gradient(90deg, #FFFFFF 17%, #1973AC 100%);
 }
 
 .gradient__text {
