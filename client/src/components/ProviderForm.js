@@ -9,6 +9,7 @@ import { ADD_PROVIDER } from "../utils/mutations";
 const ProviderForm = () => {
   // set initial form state
   const [providerFormData, setProviderFormData] = useState({
+    buisnessName: "",
     service: "",
     providerDescription: "",
     serviceDescription: "",
@@ -41,29 +42,13 @@ const ProviderForm = () => {
     const dayInput = [];
     days.forEach((element) => dayInput.push(element.value));
     setProviderFormData({ ...providerFormData, ["availableDays"]: dayInput });
-
-    // if(days.find(e => e.label === 'Monday')){
-    //   console.log("Monday");
-    // }
-    // if(days.find(e => e.label === 'Tuesday')){
-    //   console.log("Tuesday");
-    // }
-    // if(days.find(e => e.label === 'Wednesday')){
-    //   console.log("Wednesday");
-    // }
-    // if(days.find(e => e.label === 'Thursday')){
-    //   console.log("Thursday");
-    // }
-    // if(days.find(e => e.label === 'Friday')){
-    //   console.log("Friday");
-    // }
-    // if(days.find(e => e.label === 'Saturday')){
-    //   console.log("Saturday");
-    // }
-    // if(days.find(e => e.label === 'Sunday')){
-    //   console.log("Sunday");
-    // }
   };
+
+  const handleApptLength = (appt) => {
+    const apptInput = [];
+    appt.forEach((element) => apptInput.push(parseInt(element.value)));
+    setProviderFormData({ ...providerFormData, ["apptLength"]: apptInput });
+  }
 
   //Logic for retriving the schedule from the form
   const handleTimesMO = (times) => {
@@ -200,73 +185,62 @@ const ProviderForm = () => {
 
   const createSchedule = (args) => {
     const schedule = [];
-    const tempDay = {};
+    let tempDay = {};
     const tempAvlDays = args.availableDays;
 
     for (let i = 0; i < tempAvlDays.length; i++) {
-      const indexDay = tempAvlDays[i];
-      switch (indexDay) {
-        case "monday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.mondayRange.startTime,
-            endTime: args.mondayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        case "tuesday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.tuesdayRange.startTime,
-            endTime: args.tuesdayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        case "wednesday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.wednesdayRange.startTime,
-            endTime: args.wednesdayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        case "thursday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.thursdayRange.startTime,
-            endTime: args.thursdayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        case "friday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.fridayRange.startTime,
-            endTime: args.fridayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        case "saturday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.saturdayRange.startTime,
-            endTime: args.saturdayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        case "sunday":
-          tempDay = {
-            day: indexDay,
-            startTime: args.sundayRange.startTime,
-            endTime: args.sundayRange.endTime,
-          };
-          schedule.push(tempDay);
-          return;
-        default:
-          return;
+      if(tempAvlDays[i] === "Monday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.mondayRange.startTime,
+          endTime: args.mondayRange.endTime,
+        };
+        schedule.push(tempDay);
+      } else if(tempAvlDays[i] === "Tuesday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.tuesdayRange.startTime,
+          endTime: args.tuesdayRange.endTime,
+        };
+        schedule.push(tempDay);
+      } else if(tempAvlDays[i] === "Wednesday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.wednedayRange.startTime,
+          endTime: args.wednedayRange.endTime,
+        };
+        schedule.push(tempDay);
+      } else if(tempAvlDays[i] === "Thursday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.thursdayRange.startTime,
+          endTime: args.thursdayRange.endTime,
+        };
+        schedule.push(tempDay);
+      } else if(tempAvlDays[i] === "Friday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.fridayRange.startTime,
+          endTime: args.fridayRange.endTime,
+        };
+        schedule.push(tempDay);
+      } else if(tempAvlDays[i] === "Saturday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.saturdayRange.startTime,
+          endTime: args.saturdayRange.endTime,
+        };
+        schedule.push(tempDay);
+      } else if(tempAvlDays[i] === "Sunday"){
+        tempDay = {
+          day: tempAvlDays[i],
+          startTime: args.sundayRange.startTime,
+          endTime: args.sundayRange.endTime,
+        };
+        schedule.push(tempDay);
       }
+      
     }
-    console.log(schedule);
     return schedule;
   };
 
@@ -279,24 +253,39 @@ const ProviderForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
+
     let scheduleData = createSchedule(providerFormData);
+    
     try {
       const { data } = await addProvider(
         {
-          variables: { ...providerFormData },
+          buisnessName: providerFormData.buisnessName,
+          service: [providerFormData.service],
+          providerDescription: providerFormData.providerDescription,
+          serviceDescription: providerFormData.serviceDescription,
+          username: "temp",
+          schedule: scheduleData,
+          apptLength: providerFormData.apptLength,
         },
         localStorage.getItem("id_token"),
-        scheduleData
       );
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
 
     setProviderFormData({
+      buisnessName: "",
       service: "",
       providerDescription: "",
       serviceDescription: "",
+      availableDays: "",
+      mondayRange: "",
+      tuesdayRange: "",
+      wednesdayRange: "",
+      thursdayRange: "",
+      fridayRange: "",
+      saturdayRange: "",
+      sundayRange: "",
       apptLength: "",
     });
   };
@@ -314,6 +303,23 @@ const ProviderForm = () => {
         >
           Something went wrong with your signup!
         </Alert>
+
+        <Form.Group>
+          <Form.Label htmlFor="providerDescription">
+            What is the name of your buisness?
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Buisness name"
+            name="buisnessName"
+            onChange={handleInputChange}
+            value={providerFormData.buisnessName}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            A name is required!
+          </Form.Control.Feedback>
+        </Form.Group>
 
         <Form.Group>
           <Form.Label htmlFor="providerDescription">
@@ -382,6 +388,7 @@ const ProviderForm = () => {
               { label: "120 minutes", value: "120" },
             ]}
             className="basic-multi-select"
+            onChange={handleApptLength}
             classNamePrefix="select"
           />
         </Form.Group>
@@ -462,11 +469,11 @@ const ProviderForm = () => {
           disabled={
             !(
               (
+                providerFormData.buisnessName &&
                 providerFormData.providerDescription &&
                 providerFormData.service &&
                 providerFormData.serviceDescription
               )
-              // providerFormData.availableDays
             )
           }
           type="submit"

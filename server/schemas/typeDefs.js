@@ -85,7 +85,7 @@ const typeDefs = gql`
       isProvider: Boolean!
     ): Auth
     addProvider(
-      buisnessName: String
+      buisnessName: String!
       service: [String]
       providerDescription: String
       serviceDescription: String
