@@ -1,35 +1,36 @@
- .style__navbar {
-
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.style__navbar-brand,
-.style__navbar-links,
-Link {
-    color: #ff8a71;
-    line-height: 25px;
-    
-
-    cursor: pointer;
-}
-
-.style__navbar-links-srvc-prvdrs {
-    font-family: var(--font-family-pg);
-    color: #0b226f;
-    font-size: 26;  
-    font-weight: 800;
-}
-
-.style__navbar-links {
-    font-family: var(--font-family-pg);
-    color: #ff8a71;
-    font-weight: 400; 
+.style__navbar {
+  justify-content: space-between;
+  align-items: center;
 }
 
 .style__navbar-brand {
-    font-size: var(--font-family-hdr);
-    font-weight: 500;
-    font-size: 40px;
+  font-family: var(--font-family-hdr);
+  line-height: 25px;
+  cursor: pointer;
+  color: #F49867;
+  padding: .75rem 2.5rem;
+  font-size: 62px;
+  font-weight: 500;
 }
+.style__navbar-links,
+Link {
+  color: #b83d22;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.style__navbar-links-srvc-prvdrs {
+  font-family: var(--font-family-pg);
+  color: #0b226f;
+  font-size: 26;
+  font-weight: 800;
+}
+
+.style__navbar-links-lgn,
+.style__navbar-links-sgnup {
+  font-family: var(--font-family-pg);
+  color: #c15433;
+  font-weight: 600;
+  font-size: 104%;
+}
+

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 import "./Navbar/Navbar.css";
+import { GiOrbital } from "react-icons/gi";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 
@@ -17,7 +18,7 @@ const AppNavbar = () => {
         <Navbar className="gradient__bg" expand="lg">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
-              <p className="style__navbar-brand">Orbital Scheduler</p>
+              <p className="style__navbar-brand"><GiOrbital /> Orbital Scheduler</p>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar" />
             <Navbar.Collapse id="navbar">
@@ -43,10 +44,10 @@ const AppNavbar = () => {
                     <p className="style__navbar-links-srvc-prvdrs">Catalog of our Service Providers</p>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/login">
-                      <p className="style__navbar-links">Login</p>
+                      <p className="style__navbar-links-lgn">Login</p>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/signup">
-                      <p className="style__navbar-links">Signup</p>
+                      <p className="style__navbar-links-sgnup">Signup</p>
                     </Nav.Link>
                   </>
                 )}
