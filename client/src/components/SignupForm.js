@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-
+import "./SignupForm/SignupForm.css";
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
@@ -88,6 +88,34 @@ const SignupForm = () => {
 
   };
 
+  const styles = {
+    buttonContainer: {
+      display: "flex",
+      width: "50%",
+      margin: "auto",
+      justifyContent: "center"
+    },
+    button: {
+      padding: "10px",
+      margin: "15px",
+      marginTop: "25px",
+      width: "25%",
+      borderRadius: "50px",
+      border: "none",
+      outline: "none",
+      backgroundColor: "#c15433",
+      cursor: "pointer",
+      animation: "pulse"
+    },
+    formControl: {
+      display: "flex",
+      bordeRadius: "50px",
+      margin: "auto",
+      borderRadius: "50px",
+      width: "600px"
+    }
+  };
+
   return (
     <>
       {/* This is needed for the validation functionality above */}
@@ -102,9 +130,10 @@ const SignupForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control className="mb-3" controlId="exampleForm.ControlInput1"
+          <Form.Control 
+            className="form-control-sm"
             type="text"
             placeholder="Your username"
             name="username"
@@ -117,9 +146,10 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control className="mb-3" controlId="exampleForm.ControlInput1"
+          <Form.Control 
+            className="form-control-sm"
             type="email"
             placeholder="Your email address"
             name="email"
@@ -132,9 +162,10 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
+          <Form.Control 
+            className="form-control-sm"
             type="password"
             placeholder="Your password"
             name="password"
@@ -147,9 +178,10 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="firstName">First Name</Form.Label>
-          <Form.Control
+          <Form.Control 
+            className="form-control-sm"
             type="text"
             placeholder="Your First Name"
             name="firstName"
@@ -162,9 +194,10 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="surName">Surname</Form.Label>
-          <Form.Control
+          <Form.Control 
+            className="form-control-sm"
             type="text"
             placeholder="Your Surname"
             name="surName"
@@ -177,9 +210,10 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="dateOfBirth">DOB</Form.Label>
           <Form.Control
+            style={styles.formControl}
             type="date"
             name="dateOfBirth"
             onChange={handleInputChange}
@@ -191,7 +225,7 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center">
           <Form.Label htmlFor="isProvider">Would you like to register as a Provider?</Form.Label>
           <Form.Control
             type="checkbox"
@@ -204,24 +238,26 @@ const SignupForm = () => {
             This field is required!
           </Form.Control.Feedback>
         </Form.Group>
-
-        <Button
-          disabled={
-            !(
-              userFormData.username &&
-              userFormData.email &&
-              userFormData.password &&
-              userFormData.firstName &&
-              userFormData.surName &&
-              userFormData.dateOfBirth 
-              //userFormData.isProvider
-            )
-          }
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
+        <div style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            disabled={
+              !(
+                userFormData.username &&
+                userFormData.email &&
+                userFormData.password &&
+                userFormData.firstName &&
+                userFormData.surName &&
+                userFormData.dateOfBirth 
+                //userFormData.isProvider
+              )
+            }
+            type="submit"
+            variant="success"
+          >
+            Submit
+          </Button>
+        </div>
       </Form>
     </>
   );

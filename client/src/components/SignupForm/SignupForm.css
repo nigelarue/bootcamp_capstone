@@ -1,8 +1,32 @@
-.style__form-label {
-    padding: 1rem 1.5rem;  
+
+.style__navbar-links-lgn,
+.style__navbar-links-sgnup {
+    visibility: visible;
 }
 
-.style__form-input {
-    padding: 1rem 1.5rem;
-    width: 48%;
+.text-center {
+    display: inline;
+    margin-left: 35%;
+    flex-direction: column;
+    line-height: 3.143;
+    font-family: var(--font-family-hdr);
+    font-size: 98%;
+    font-weight: 600;
+
+  }
+
+.form-control-sm {
+  display: flex;
+  border-radius: 50px;
+  margin: auto;
+  font-size: 95%;
+  font-family: var(--font-family-pg);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  height: 34px;
+  line-height: 1.42857143;
+  width: 600px;
+  flex-direction: column;
+  justify-content: space-between;
 }
