@@ -290,6 +290,44 @@ const ProviderForm = () => {
     });
   };
 
+  const styles = {
+    buttonContainer: {
+      display: "flex",
+      width: "50%",
+      margin: "auto",
+      justifyContent: "center"
+    },
+    formGroup: {
+      padding: "15px",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "column",
+      borderRadius: "50px",
+      width: "35%",
+      margin: "auto",
+      fontSize: "1.237 rem",
+      fontWeight: "500"
+    },
+    formControl: {
+      display: "flex",
+      bordeRadius: "50px",
+      margin: "auto",
+      borderRadius: "50px",
+      width: "100%"
+    },
+    button: {
+      width: "200px",
+      padding: "10px",
+      margin: "5px",
+      borderRadius: "50px",
+      backgroundColor: "#b83d22",
+      fontWeight: "500",
+      border: "none",
+      outline: "none",
+      cursor: "pointer"
+    }
+  };
+
   return (
     <>
       {/* This is needed for the validation functionality above */}
@@ -321,11 +359,29 @@ const ProviderForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
+          <Form.Label htmlFor="providerDescription">
+            What is the name of your buisness?
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Buisness name"
+            name="buisnessName"
+            onChange={handleInputChange}
+            value={providerFormData.buisnessName}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            A name is required!
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="providerDescription">
             Describe yourself for clients
           </Form.Label>
           <Form.Control
+            style={styles.formControl}
             type="textarea"
             placeholder="A description of yourself"
             name="providerDescription"
@@ -338,11 +394,12 @@ const ProviderForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="service">
             What service will you be providing?
           </Form.Label>
           <Form.Control
+            style={styles.formControl}
             type="text"
             placeholder="Service"
             name="service"
@@ -355,11 +412,12 @@ const ProviderForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="providerDescription">
             Describe your service for clients
           </Form.Label>
           <Form.Control
+            style={styles.formControl}
             type="textarea"
             placeholder="A description of your service"
             name="serviceDescription"
@@ -372,7 +430,7 @@ const ProviderForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             What appointment lengths would you like to offer?
           </Form.Label>
@@ -393,7 +451,7 @@ const ProviderForm = () => {
           />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             What days are you available for appointments
           </Form.Label>
@@ -415,49 +473,49 @@ const ProviderForm = () => {
           />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Monday?
           </Form.Label>
           <TimeRangePicker name="monday" onChange={handleTimesMO} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Tuesday?
           </Form.Label>
           <TimeRangePicker name="tuesday" onChange={handleTimesTU} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Wednesday?
           </Form.Label>
           <TimeRangePicker name="wednesday" onChange={handleTimesWE} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Thursday?
           </Form.Label>
           <TimeRangePicker name="thursday" onChange={handleTimesTH} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Friday?
           </Form.Label>
           <TimeRangePicker name="friday" onChange={handleTimesFR} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Saturday?
           </Form.Label>
           <TimeRangePicker name="saturday" onChange={handleTimesSA} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="schedule">
             When are you available on Sunday?
           </Form.Label>
@@ -465,22 +523,25 @@ const ProviderForm = () => {
 
         </Form.Group>
 
-        <Button
-          disabled={
-            !(
-              (
-                providerFormData.buisnessName &&
-                providerFormData.providerDescription &&
-                providerFormData.service &&
-                providerFormData.serviceDescription
-              )
-            )
-          }
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
+        <div style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            disabled={
+              !(
+                (
+                  providerFormData.buisnessName &&
+                  providerFormData.providerDescription &&
+                  providerFormData.service &&
+                  providerFormData.serviceDescription
+                )
+                )
+            }
+            type="submit"
+            variant="success"
+          >
+            Submit
+          </Button>
+        </div>
       </Form>
     </>
   );
