@@ -39,7 +39,7 @@ const ProviderCatalog = () => {
                     <p className="small">Provider: {appt.providerBooking}</p>
                     <p className="small">Appointment Length: {appt.apptLength}</p>
                     <p className="small">Appointment Date: {appt.apptDate}</p>
-                    {/* <Card.Text>{book.description}</Card.Text> */}
+                    {/* <Card.Text>{appt.description}</Card.Text> */}
                     <Button
                       className="btn-block btn-danger"
                       onClick={() => handleDeleteAppt(appt.apptId)}
