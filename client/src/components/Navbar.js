@@ -5,6 +5,7 @@ import "./Navbar/Navbar.css";
 import { GiOrbital } from "react-icons/gi";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import BookingForm from "./BookingForm";
 
 import Auth from "../utils/auth";
 
@@ -23,7 +24,7 @@ const AppNavbar = () => {
             <Navbar.Toggle aria-controls="navbar" />
             <Navbar.Collapse id="navbar">
               <Nav className="ml-auto">
-                {/* if user is logged in show saved books and logout */}
+                {/* if user is logged in show saved appts and logout */}
                 {Auth.loggedIn() ? (
                   <>
                     {Auth.getProfile().data.isProvider ? (
@@ -31,9 +32,14 @@ const AppNavbar = () => {
                         <p className="style__navbar-links">Provider</p>
                       </Nav.Link>
                     ) : (
+                      <>
+                      <Nav.Link as={Link} to="/BookingForm">
+                        <p className="style__navbar-links">Book an Appointment</p>
+                      </Nav.Link>                       
                       <Nav.Link as={Link} to="/user">
                         <p className="style__navbar-links">User</p>
                       </Nav.Link>
+                      </>                     
                     )}
 
                     <Nav.Link onClick={Auth.logout}><p className="style__navbar-links">Logout</p></Nav.Link>

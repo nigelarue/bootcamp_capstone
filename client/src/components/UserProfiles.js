@@ -4,7 +4,7 @@ import { Container, CardColumns, Card, Button } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { REMOVE_APPT } from "../utils/mutations";
-// import { removeBookId } from '../utils/localStorage';
+
 
 import Auth from "../utils/auth";
 
@@ -14,7 +14,7 @@ const UserProfiles = () => {
 
   const userData = data?.me || {};
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+  // create function that accepts the appt's mongo _id value as param and deletes the appt from the database
   const handleDeleteAppt = async (apptId) => {
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -28,8 +28,8 @@ const UserProfiles = () => {
         variables: { apptId },
       });
 
-      // upon success, remove book's id from localStorage
-      //   removeBookId(bookId);
+      // upon success, remove appt's id from localStorage
+      //   removeappt(apptId);
     } catch (err) {
       console.error(err);
     }
@@ -60,7 +60,6 @@ const UserProfiles = () => {
                   <p className="small">Provider: {appt.providerBooking}</p>
                   <p className="small">Appointment Length: {appt.apptLength}</p>
                   <p className="small">Appointment Date: {appt.apptDate}</p>
-                  {/* <Card.Text>{book.description}</Card.Text> */}
                   <Button
                     className="btn-block btn-danger"
                     onClick={() => handleDeleteAppt(appt.apptId)}

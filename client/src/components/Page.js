@@ -5,7 +5,7 @@ import Login from "./LoginForm";
 import Signup from "./SignupForm";
 import ProviderProfile from "./ProviderProfile";
 import UserProfile from "./UserProfiles";
-import Booking from "./BookingForm";
+import BookingForm from "./BookingForm";
 import PoviderCatalog from "./ProviderCatalog";
 
 function Page({ currentPage, setCurrentPage }) {
@@ -20,7 +20,7 @@ function Page({ currentPage, setCurrentPage }) {
       case "User Profile":
         return <UserProfile />;
       case "Booking":
-        return <Booking />;
+        return <BookingForm />;
       case "Provider Catalog":
         return <ProviderCatalog />;
       default:
