@@ -342,23 +342,6 @@ const ProviderForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <Form.Group>
-          <Form.Label htmlFor="providerDescription">
-            What is the name of your buisness?
-          </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Buisness name"
-            name="buisnessName"
-            onChange={handleInputChange}
-            value={providerFormData.buisnessName}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            A name is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
         <Form.Group style={styles.formGroup}>
           <Form.Label htmlFor="providerDescription">
             What is the name of your buisness?
