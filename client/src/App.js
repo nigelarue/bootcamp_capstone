@@ -80,7 +80,7 @@ function App() {
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/provider" element={<ProviderProfile />} />
             <Route path="/user" element={<UserProfiles />} />
-            <Route path="/providerSignup" element={<ProviderForm />} />
+            <Route path="/ProviderForm" element={<ProviderForm />} />
             {/* <Route path="/providerCatalog" element={<ProviderCatalog />} /> */}
             <Route path="/BookingForm" element={<BookingForm />} />
             <Route
